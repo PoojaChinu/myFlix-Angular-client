@@ -40,7 +40,7 @@ export class UserLoginFormComponent implements OnInit {
       },
       (response) => {
         console.log(response);
-        this.snackBar.open('User login successful', 'OK', {
+        this.snackBar.open('User login failed', 'OK', {
           duration: 2000,
         });
       }

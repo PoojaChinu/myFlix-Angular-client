@@ -10,6 +10,10 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { FormControl } from '@angular/forms';
+
+import { FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-user-registration-form',
   templateUrl: './user-registration-form.component.html',
@@ -17,6 +21,19 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserRegistrationFormComponent implements OnInit {
   @Input() userData = { Name: '', Password: '', Email: '', Birthday: '' };
+
+  valueForm = new FormGroup({
+    // input: new FormControl(),
+    name: new FormControl(''),
+    password: new FormControl(''),
+    email: new FormControl(''),
+    birthday: new FormControl(''),
+  });
+  title = 'myMovie-Angular-client';
+
+  onSubmit() {
+    console.log(this.valueForm.value);
+  }
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -32,13 +49,11 @@ export class UserRegistrationFormComponent implements OnInit {
       (response) => {
         // Logic for a successful user registration goes here! (To be implemented)
         this.dialogRef.close(); // This will close the modal on success!
-        console.log(response);
-        this.snackBar.open('user registered sucessfully !', 'OK', {
+        this.snackBar.open(response, 'OK', {
           duration: 2000,
         });
       },
       (response) => {
-        console.log(response);
         this.snackBar.open(response, 'OK', {
           duration: 2000,
         });

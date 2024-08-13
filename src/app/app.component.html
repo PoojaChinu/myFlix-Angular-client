@@ -1,39 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <router-outlet> </router-outlet>
-    <div class="main-page">
-      <h1>Welcome to myFlix</h1>
-      <button
-        mat-raised-button
-        (click)="openUserRegistrationDialog()"
-        style="margin-right: 10px"
-        color="primary"
-      >
-        Sign up
-      </button>
-      <button
-        mat-raised-button
-        (click)="openUserLoginDialog()"
-        color="primary"
-        style="margin-right: 10px"
-      >
-        Login
-      </button>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="openMoviesDialog()"
-        color="primary"
-        style="margin-right: 10px"
-      >
-        All Movies
-      </button>
-    </div>
-  </body>
-</html>
+<div class="main-page">
+  <h1>Welcome to myFlix!</h1>
+  <button
+    Mat-raised-button
+    (click)="openUserRegistrationDialog()"
+    style="margin-right: 10px"
+    color="primary"
+  >
+    Sign Up
+  </button>
+  <button
+    Mat-raised-button
+    (click)="openUserLoginDialog()"
+    style="margin-right: 10px"
+    color="primary"
+  >
+    Login
+  </button>
+  <button
+    Mat-raised-button
+    (click)="openMoviesDialog()"
+    style="margin-right: 10px"
+    color="primary"
+  >
+    All Movies
+  </button>
+</div>

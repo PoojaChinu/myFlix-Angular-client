@@ -1,12 +1,10 @@
-<p>user-login-form works!</p>
-
 <mat-card>
-  <mat-card-header>
+  <mat-card-header class="card-header">
     <mat-card-title>Login</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form>
-      <mat-form-field>
+      <mat-form-field class="form-inputs">
         <input
           matInput
           [(ngModel)]="userData.Name"
@@ -16,7 +14,7 @@
           required
         />
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="form-inputs">
         <input
           matInput
           [(ngModel)]="userData.Password"
@@ -29,7 +27,12 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="loginUser()" class="button-profile">
+    <button
+      mat-raised-button
+      (click)="loginUser()"
+      class="button-profile"
+      color="primary"
+    >
       Login
     </button>
   </mat-card-actions>
