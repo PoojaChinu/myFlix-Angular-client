@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DirectorInfoComponent } from '../director-info/director-info.component';
 import { GenreInfoComponent } from '../genre-info/genre-info.component';
 import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
+// Import to display notifications back to the user
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-movie-card',
@@ -12,19 +14,26 @@ import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.compone
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
+  user: any = {};
+  userData = { Username: '', FavoriteMovies: [] };
+  FavoriteMovies: any[] = [];
+  isFavMovie: boolean = false;
+
   constructor(
     public fetchApiData: FetchApiDataService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.getMovies();
+    this.getFavMovies();
   }
 
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log(this.movies);
+
       return this.movies;
     });
   }
@@ -57,5 +66,59 @@ export class MovieCardComponent implements OnInit {
       },
       width: '450px',
     });
+  }
+
+  getFavMovies(): void {
+    this.user = this.fetchApiData.getUser();
+    this.userData.FavoriteMovies = this.user.FavoriteMovies;
+    this.FavoriteMovies = this.user.FavoriteMovies;
+    console.log('Fav Movies in getFavMovie', this.FavoriteMovies);
+  }
+
+  addFavMovies(movie: any): void {
+    this.user = this.fetchApiData.getUser();
+    this.userData.Username = this.user.Username;
+
+    this.fetchApiData
+      .addFavouriteMovies(this.user._id, movie)
+      .subscribe((result) => {
+        localStorage.setItem('user', JSON.stringify(result));
+        this.getFavMovies();
+        this.snackBar.open('Movie has been added to your favorites!', 'OK', {
+          duration: 3000,
+        });
+      });
+  }
+
+  isFav(movie: any): any {
+    const MovieID = movie._id;
+    if (this.FavoriteMovies.some((movie) => movie === MovieID)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  toggleFavMovie(movie: any): void {
+    const isFavorite = this.isFav(movie);
+    isFavorite ? this.deleteFavMovies(movie) : this.addFavMovies(movie);
+  }
+
+  deleteFavMovies(movie: any): void {
+    this.user = this.fetchApiData.getUser();
+    this.userData.Username = this.user.Username;
+    this.fetchApiData
+      .deleteFavouriteMovies(this.user._id, movie)
+      .subscribe((result) => {
+        localStorage.setItem('user', JSON.stringify(result));
+        this.getFavMovies();
+        this.snackBar.open(
+          'Movie has been deleted from your favorites!',
+          'OK',
+          {
+            duration: 3000,
+          }
+        );
+      });
   }
 }

@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 // Component
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
@@ -57,12 +59,15 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatSnackBarModule,
     ReactiveFormsModule,
     MatIconModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
   ],
+  exports: [MatDatepickerModule, MatNativeDateModule],
   providers: [provideAnimationsAsync()],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

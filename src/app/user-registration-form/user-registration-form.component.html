@@ -1,4 +1,3 @@
-<app-navbar></app-navbar>
 <mat-card>
   <mat-card-header class="card-header">
     <mat-card-title>Sign Up!</mat-card-title>
@@ -39,10 +38,16 @@
         <input
           matInput
           [(ngModel)]="userData.Birthday"
-          type="date"
+          [matDatepicker]="picker"
           placeholder="Birthday"
           name="Birthday"
+          required
         />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </form>
   </mat-card-content>
@@ -57,44 +62,3 @@
     </button>
   </mat-card-actions>
 </mat-card>
-<!-- <form [formGroup]="valueForm" (ngSubmit)="onSubmit()">
-      <input
-        type="text"
-        name="value"
-        id="name"
-        name="name"
-        placeholder="Name"
-        formControlName="name"
-      />
-      <input
-        type="text"
-        password="value"
-        name="password"
-        placeholder="Password"
-        formControlName="password"
-      />
-      <input
-        type="text"
-        email="value"
-        id="email"
-        name="email"
-        placeholder="Email"
-        formControlName="email"
-      />
-      <input
-        type="text"
-        birthday="value"
-        name="birthday"
-        placeholder="Birthday"
-        id="birthday"
-        formControlName="birthday"
-      />
-      <button
-        mat-raised-button
-        (click)="registerUser()"
-        class="button-profile"
-        color="primary"
-      >
-        Signup
-      </button>
-    </form> -->
