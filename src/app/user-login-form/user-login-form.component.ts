@@ -17,14 +17,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-login-form.component.scss'],
 })
 export class UserLoginFormComponent implements OnInit {
+  /**
+   * Object holding user data for login
+   * @property {string} Name - The user's username
+   * @property {string} Password - The user's password
+   */
   @Input() userData = { Name: '', Password: '' };
 
+  /**
+   * Creates an instance of UserLoginFormComponent.
+   * @param fetchApiData - API data fetching service.
+   * @param dialogRef - Angular Material dialog reference.
+   * @param snackBar - Angular Material snackbar service.
+   * @param router - Angular Router service.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
     private router: Router
   ) {}
+
+  /**
+   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+   */
 
   ngOnInit(): void {}
 

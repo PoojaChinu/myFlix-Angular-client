@@ -28,6 +28,14 @@ export class UserProfileComponent implements OnInit {
   movies: any[] = [];
   FavoriteMovies: any[] = [];
 
+  /**
+   * Creates an instance of UserProfileComponent.
+   * @param fetchApiData - API data fetching service.
+   * @param dialog - Angular Material dialog service.
+   * @param snackBar - Angular Material snackbar service.
+   * @param router - Angular Router service.
+   */
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
@@ -35,12 +43,19 @@ export class UserProfileComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
+  /**
+   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+   */
+
   ngOnInit(): void {
     this.getProfile();
     this.getFavMovies();
   }
 
-  // function for getting user
+  /**
+   * Fetches the user's profile information and favorite movies.
+   * @returns void
+   */
   getProfile(): void {
     this.user = this.fetchApiData.getUser();
     this.user.Birthday = new Date(this.user.Birthday)
@@ -52,6 +67,11 @@ export class UserProfileComponent implements OnInit {
     this.userData.Email = this.user.Email;
     this.userData.Birthday = this.user.Birthday;
   }
+
+  /**
+   * Updates the user's profile information.
+   * @returns Promise<void>
+   */
 
   updateUser(): void {
     this.fetchApiData.editUser(this.user._id, this.userData).subscribe(
@@ -70,7 +90,10 @@ export class UserProfileComponent implements OnInit {
       }
     );
   }
-
+  /**
+   * Deletes the user's account after confirmation.
+   * @returns Promise<void>
+   */
   deleteUser(): void {
     this.router.navigate(['welcome']).then(() => {
       localStorage.clear();

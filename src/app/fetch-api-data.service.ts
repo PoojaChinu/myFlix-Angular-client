@@ -8,13 +8,19 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-//Declaring the api url that will provide data for the client app
+/**
+ * Base URL of the API.
+ */
 const apiUrl = 'https://infinite-sea-93950-c4e971611e32.herokuapp.com';
+
+/**
+ * Injectable service for fetching data from the API.
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class FetchApiDataService {
-  /**
+  /** Constructs a new FetchApiDataService with the HttpClient injected.
    * @constructor
    * @param {HttpClient} http - For making HTTP requests.
    */
