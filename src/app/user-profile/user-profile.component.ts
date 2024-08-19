@@ -61,11 +61,6 @@ export class UserProfileComponent implements OnInit {
     this.user.Birthday = new Date(this.user.Birthday)
       .toISOString()
       .slice(0, 10);
-
-    this.userData.Name = this.user.Name;
-    this.userData.Password = this.user.Password;
-    this.userData.Email = this.user.Email;
-    this.userData.Birthday = this.user.Birthday;
   }
 
   /**
@@ -75,15 +70,13 @@ export class UserProfileComponent implements OnInit {
 
   updateUser(): void {
     this.fetchApiData.editUser(this.user._id, this.userData).subscribe(
-      (result) => {
-        console.log('User update success');
+      (result: any) => {
         localStorage.setItem('user', JSON.stringify(result));
         this.snackBar.open('User update successful', 'OK', {
           duration: 2000,
         });
       },
-      (error) => {
-        console.error('Error updating user:', error);
+      (error: any) => {
         this.snackBar.open('Failed to update user', 'OK', {
           duration: 2000,
         });
@@ -101,9 +94,7 @@ export class UserProfileComponent implements OnInit {
         duration: 2000,
       });
     });
-    this.fetchApiData.deleteUser().subscribe((result) => {
-      console.log(result);
-    });
+    this.fetchApiData.deleteUser().subscribe(() => {});
   }
 
   /**
@@ -113,7 +104,7 @@ export class UserProfileComponent implements OnInit {
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log(this.movies);
+
       return this.movies;
     });
   }
@@ -160,8 +151,6 @@ export class UserProfileComponent implements OnInit {
       this.FavoriteMovies = this.movies.filter((movie) => {
         return this.user.FavoriteMovies.includes(movie._id);
       });
-
-      console.log('Fav Movies in getFavMovie', this.FavoriteMovies);
 
       return this.FavoriteMovies;
     });

@@ -47,9 +47,8 @@ export class UserLoginFormComponent implements OnInit {
   // Function responsible for sending the form inputs to the backend
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
-      (response) => {
+      (response: any) => {
         //Logic for a successful user login
-        console.log(response);
         localStorage.setItem('user', JSON.stringify(response.user));
         localStorage.setItem('token', response.token);
         this.dialogRef.close(); // Will close modal on success (To be implemented)
@@ -58,8 +57,7 @@ export class UserLoginFormComponent implements OnInit {
         });
         this.router.navigate(['movies']);
       },
-      (response) => {
-        console.log(response);
+      (response: any) => {
         this.snackBar.open('User login failed', 'OK', {
           duration: 2000,
         });

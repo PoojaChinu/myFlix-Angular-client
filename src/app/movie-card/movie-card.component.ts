@@ -104,7 +104,6 @@ export class MovieCardComponent implements OnInit {
     this.user = this.fetchApiData.getUser();
     this.userData.FavoriteMovies = this.user.FavoriteMovies;
     this.FavoriteMovies = this.user.FavoriteMovies;
-    console.log('Fav Movies in getFavMovie', this.FavoriteMovies);
   }
   /**
    * Adds a movie to user's favorites.
