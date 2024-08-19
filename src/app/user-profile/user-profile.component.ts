@@ -94,7 +94,18 @@ export class UserProfileComponent implements OnInit {
         duration: 2000,
       });
     });
-    this.fetchApiData.deleteUser().subscribe(() => {});
+    this.fetchApiData.deleteUser(this.user._id).subscribe(
+      (result: any) => {
+        this.snackBar.open('User deleted', 'OK', {
+          duration: 2000,
+        });
+      },
+      (error: any) => {
+        this.snackBar.open('Failed to delete user', 'OK', {
+          duration: 2000,
+        });
+      }
+    );
   }
 
   /**

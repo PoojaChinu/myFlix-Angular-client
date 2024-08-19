@@ -1,9 +1,8 @@
-profile-container {
-  display: flex;
-  flex-wrap: wrap;
+.profile-container {
   justify-content: center;
-  margin-top: 8vh;
+  padding-top: 100px;
 }
+
 .user-card {
   margin: 50px;
   padding: 10px;
