@@ -18,7 +18,7 @@ Welcome to MyFlixAngular, a portfolio project showcasing my skills in building A
 
 ## Live Demo
 
-You can view the live demo of the myFlix-Angular at: [myFlix-Angular Live Demo](https://poojachinu.github.io/myFlix-Angular-client/welcome)
+You can view the live demo of the myFlix-Angular at: [myFlix-Angular Live Demo](https://poojachinu.github.io/myFlix-Angular-client)
 
 ## Technologies
 
