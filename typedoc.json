@@ -6,6 +6,6 @@
     "excludeExternals": true,
     "excludePrivate": true,
     "excludeProtected": true,
-    "name": "My Project Documentation",
+    "name": "MyFlix-Angular-Client Project Documentation",
     "includeVersion": true
 }

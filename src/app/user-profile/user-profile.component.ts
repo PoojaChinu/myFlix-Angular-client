@@ -120,6 +120,13 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Function for openDirectorDialog
+   *
+   * @param {string} name
+   * @param {string} bio
+   * @param {string} birthYear
+   */
   openDirectorDialog(name: string, bio: string, birthYear: string): void {
     this.dialog.open(DirectorInfoComponent, {
       data: {
@@ -131,6 +138,12 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   *  Function for openGenreDialog
+   *
+   * @param {string} name
+   * @param {string} description
+   */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreInfoComponent, {
       data: {
@@ -141,6 +154,11 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Function for openSynopsisDialog
+   *
+   * @param {string} description
+   */
   openSynopsisDialog(description: string): void {
     this.dialog.open(MovieSynopsisComponent, {
       data: {

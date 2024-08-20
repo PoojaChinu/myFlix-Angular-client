@@ -14,8 +14,13 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class GenreInfoComponent implements OnInit {
   /**
-   * @constructor - Constructor for GenreInfoComponent.
-   * @param data - Data containing genre information.
+   * Creates an instance of GenreInfoComponent.
+   *
+   * @constructor
+   * @param {{
+   *       Name: string;
+   *       Description: string;
+   *     }} data
    */
   constructor(
     @Inject(MAT_DIALOG_DATA)

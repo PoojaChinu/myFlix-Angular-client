@@ -24,7 +24,9 @@ import { FormGroup } from '@angular/forms';
 })
 export class UserRegistrationFormComponent implements OnInit {
   /**
-   * Holds the user's registration data.
+   * Description placeholder
+   *
+   * @type {{ Name: string; Password: string; Email: string; Birthday: string; }}
    */
   @Input() userData = { Name: '', Password: '', Email: '', Birthday: '' };
 
